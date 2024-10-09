@@ -5,7 +5,3 @@
 # {{- include "lib-chart.serviceaccount" . }}
 
 
----
-
-{{- include "lib-chart.helpers" . }}
-
