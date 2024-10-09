@@ -1,0 +1,9 @@
+{{- include "lib-chart.AWS-External-Secret" . }}
+
+---
+
+{{- include "lib-chart.ServiceAccount" . }}
+
+
+
+
