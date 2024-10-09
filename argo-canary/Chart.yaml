@@ -8,3 +8,5 @@ dependencies:
   - name: lib-chart
     version: 1.0.0
     repository: file://../lib-chart
+maintainers:
+  - name: shristi-opstree
