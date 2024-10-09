@@ -1,6 +1,4 @@
-{{/*
-Generate a fullname based on the release name and chart name
-*/}}
+
 {{- define "bluegreen.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
