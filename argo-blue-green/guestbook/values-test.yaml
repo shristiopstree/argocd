@@ -4,6 +4,10 @@ global:
   environment: {}
   replicaCount: 1
 
+serviceAccount:
+  enabled: true
+  name: guestbook-sa
+
 deployment:
   annotations: {}
   environment: {}
@@ -29,13 +33,13 @@ deployment:
     successThreshold: 1
     failureThreshold: 3
 
-  # resources:
-  #   requests:
-  #     cpu: "100m"
-  #     memory: "256Mi"
-  #   limits:
-  #     cpu: "200m"
-  #     memory: "512Mi"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m"
+      memory: "512Mi"
 
 image:
   repository: "gcr.io/heptio-images/ks-guestbook-demo"
@@ -58,3 +62,8 @@ service:
       protocol: TCP
 
 
+secrets:
+  database-password:
+    key: "/path/to/your/secret/database-password"
+  api-key:
+    key: "/path/to/your/secret/api-key"

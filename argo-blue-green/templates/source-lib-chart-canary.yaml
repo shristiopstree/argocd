@@ -1,3 +1,12 @@
+{{- include "lib-chart.externalsecret" . }}
+
+---
+
+{{- include "lib-chart.serviceaccount" . }}
+
+
+
+
 
 
 
