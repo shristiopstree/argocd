@@ -1,7 +1,4 @@
-{{/*
-Rollout template for a microservice with a canary strategy
-*/}}
-{{- define "argo-canary.rolloutcanary" -}}
+
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:

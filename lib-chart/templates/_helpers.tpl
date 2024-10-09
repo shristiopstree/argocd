@@ -1,6 +1,5 @@
-{{/*
-Common helper templates
-*/}}
+{{- define "lib-chart.helpers" -}}
+
 
 {{- define "lib-chart.fullname" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
