@@ -1,4 +1,4 @@
-{{- include "lib-chart.external-secret" . }}
+{{- include "lib-chart.externalsecret" . }}
 
 ---
 
