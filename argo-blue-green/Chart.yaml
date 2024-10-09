@@ -10,3 +10,4 @@ dependencies:
     repository: file://../lib-chart
 maintainers:
   - name: shristi-opstree
+    email: shristi.gutpa@opstree.com
