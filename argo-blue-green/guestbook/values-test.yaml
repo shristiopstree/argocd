@@ -13,7 +13,7 @@ deployment:
   environment: {}
 
   healthProbes:
-    enabled: true
+    enabled: false
   livenessProbe:
     httpGet:
       path: "/health"
