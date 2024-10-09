@@ -1,6 +1,4 @@
-{{/*
-Create a ConfigMap
-*/}}
+{{- define "lib-chart.configmap" -}}
 
 apiVersion: v1
 kind: ConfigMap

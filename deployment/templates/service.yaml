@@ -1,15 +1,15 @@
-{{- define "mylibchart.service" -}}
+{{- define "deployment.service" -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mylibchart.fullname" . }}-svc
+  name: {{ include "deployment.fullname" . }}-svc
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "mylibchart.labels" . | nindent 4 }}
+    {{ include "deployment.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type | default "ClusterIP" }}
   selector:
-    app: {{ include "mylibchart.fullname" . }}
+    app: {{ include "deployment.fullname" . }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}

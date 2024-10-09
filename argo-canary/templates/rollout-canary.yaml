@@ -1,11 +1,11 @@
 {{/*
 Rollout template for a microservice with a canary strategy
 */}}
-{{- define "mylibchart.rolloutcanary" -}}
+{{- define "argo-canary.rolloutcanary" -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "mylibchart.fullname" . }}-app
+  name: {{ include "argo-canary.fullname" . }}-app
   namespace: {{ .Values.global.namespace | quote }}
   {{- if .Values.deployment.annotations }}
   annotations:
@@ -14,7 +14,7 @@ metadata:
     {{- end }}
   {{- end }}
   labels:
-    {{- include "mylibchart.labels" . | nindent 4 }}
+    {{- include "argo-canary.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.global.replicaCount }}
   strategy:
@@ -29,11 +29,11 @@ spec:
         {{- end }}
   selector:
     matchLabels:
-      {{- include "mylibchart.selectorLabels" . | nindent 6 }}
+      {{- include "argo-canary.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "mylibchart.selectorLabels" . | nindent 8 }}
+        {{- include "argo-canary.selectorLabels" . | nindent 8 }}
       {{- if .Values.deployment.podAnnotations }}
       annotations:
         {{- range $key, $value := .Values.deployment.podAnnotations }}
@@ -46,7 +46,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ include "mylibchart.fullname" . }}
+        - name: {{ include "argo-canary.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.deployment.command }}

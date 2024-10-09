@@ -1,15 +1,15 @@
-{{- define "mylibchart.canaryService" -}}
+{{- define "argo-canary.canaryService" -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mylibchart.fullname" . }}-canary
+  name: {{ include "argo-canary.fullname" . }}-canary
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "mylibchart.labels" . | nindent 4 }}
+    {{ include "argo-canary.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "mylibchart.selectorLabels" . | nindent 4 }}
+    {{ include "argo-canary.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}
@@ -20,18 +20,18 @@ spec:
 {{- end }}
 
 ---
-{{- define "mylibchart.stableService" -}}
+{{- define "argo-canary.stableService" -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mylibchart.fullname" . }}-stable
+  name: {{ include "argo-canary.fullname" . }}-stable
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "mylibchart.labels" . | nindent 4 }}
+    {{ include "argo-canary.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "mylibchart.selectorLabels" . | nindent 4 }}
+    {{ include "argo-canary.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}

@@ -1,6 +1,4 @@
-{{/*
-Create a Secret
-*/}}
+{{- define "lib-chart.secrets" -}}
 
 apiVersion: v1
 kind: Secret

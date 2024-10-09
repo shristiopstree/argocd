@@ -1,8 +1,8 @@
-{{- define "mylibchart.rolloutBlueGreen" -}}
+{{- define "argo-blue-green.rolloutBlueGreen" -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "mylibchart.fullname" . }}-app
+  name: {{ include "argo-blue-green.fullname" . }}-app 
   namespace: {{ .Values.global.namespace | quote }}
   {{- if .Values.deployment.annotations }}
   annotations:
@@ -11,21 +11,21 @@ metadata:
     {{- end }}
   {{- end }}
   labels:
-    {{- include "mylibchart.labels" . | nindent 4 }}
+    {{- include "argo-blue-green.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.global.replicaCount }}
   strategy:
     blueGreen:
-      activeService: {{ include "mylibchart.fullname" . }}-active
-      previewService: {{ include "mylibchart.fullname" . }}-preview
+      activeService: {{ include "argo-blue-green.fullname" . }}-active
+      previewService: {{ include "argo-blue-green.fullname" . }}-preview
       autoPromotionEnabled: true
   selector:
     matchLabels:
-      {{- include "mylibchart.selectorLabels" . | nindent 6 }}
+      {{- include "argo-blue-green.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "mylibchart.selectorLabels" . | nindent 8 }}
+        {{- include "argo-blue-green.selectorLabels" . | nindent 8 }}
       {{- if .Values.deployment.podAnnotations }}
       annotations:
         {{- range $key, $value := .Values.deployment.podAnnotations }}
@@ -38,7 +38,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ include "mylibchart.fullname" . }}
+        - name: {{ include "argo-blue-green.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.deployment.command }}

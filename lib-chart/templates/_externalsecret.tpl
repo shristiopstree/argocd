@@ -1,6 +1,4 @@
-{{/*
-Create a externalsecret
-*/}}
+{{- define "lib-chart.externalsecret" -}}
 
 apiVersion: kubernetes-client.io/v1
 kind: ExternalSecret

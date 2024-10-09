@@ -1,6 +1,4 @@
-{{/*
-Create a ServiceAccount
-*/}}
+{{- define "lib-chart.serviceaccount" -}}
 
 apiVersion: v1
 kind: ServiceAccount
