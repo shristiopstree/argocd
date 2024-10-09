@@ -9,3 +9,4 @@ Common helper templates
 {{- define "lib-chart.labels" -}}
 app: {{ include "lib-chart.fullname" . }}
 {{- end -}}
+
