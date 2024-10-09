@@ -4,6 +4,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: {{ include "lib-chart.fullname" . }}-secret
+  namespace: {{ .Release.Namespace }} 
 type: Opaque
 data:
   {{- range $key, $value := .Values.secrets }}
