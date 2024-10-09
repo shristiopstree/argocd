@@ -1,15 +1,15 @@
-{{- define "argo-blue-green.serviceActive" -}}
+{{- define "bluegreen.serviceActive" -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "argo-blue-green.fullname" . }}-active
+  name: {{ include "bluegreen.fullname" . }}-active
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "argo-blue-green.labels" . | nindent 4 }}
+    {{ include "bluegreen.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "argo-blue-green.selectorLabels" . | nindent 4 }}
+    {{ include "bluegreen.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}
@@ -20,18 +20,18 @@ spec:
 {{- end }}
 
 ---
-{{- define "argo-blue-green.servicePreview" -}}
+{{- define "bluegreen.servicePreview" -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "argo-blue-green.fullname" . }}-preview
+  name: {{ include "bluegreen.fullname" . }}-preview
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "argo-blue-green.labels" . | nindent 4 }}
+    {{ include "bluegreen.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "argo-blue-green.selectorLabels" . | nindent 4 }}
+    {{ include "bluegreen.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}
