@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: {{ include "lib-chart.fullname" . }}
-  namespace: {{ .Release.Namespace }} 
+  namespace: {{ .Values.global.namespace | quote }}
   labels:
   {{- include "lib-chart.labels" . | nindent 4 }}
   
