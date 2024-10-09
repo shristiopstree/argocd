@@ -8,4 +8,6 @@ type: Opaque
 data:
   {{- range $key, $value := .Values.secrets }}
   {{ $key }}: {{ $value | b64enc | quote }}
-{{- end }}
+  {{- end }}
+  
+{{- end -}} 

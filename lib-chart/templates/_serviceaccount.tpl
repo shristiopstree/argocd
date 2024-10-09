@@ -6,4 +6,5 @@ metadata:
   name: {{ include "lib-chart.fullname" . }}
   labels:
   {{- include "lib-chart.labels" . | nindent 4 }}
+  
 {{- end -}}  

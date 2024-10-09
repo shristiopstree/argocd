@@ -10,4 +10,6 @@ spec:
     {{- range $key, $value := .Values.secrets }}
     - key: {{ $value.key }}         
       name: {{ $key }}               
-  {{- end }}
+    {{- end }}
+
+{{- end -}} 
