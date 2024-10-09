@@ -1,5 +1,5 @@
 {{/*
-Create a AWS-External-Secret
+Create a AWSExternalSecret
 */}}
 
 apiVersion: kubernetes-client.io/v1
