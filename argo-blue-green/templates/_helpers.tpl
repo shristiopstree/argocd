@@ -1,13 +1,21 @@
 {{/*
-Expand the name of the chart.
+Generate a fullname based on the release name and chart name
 */}}
-{{- define "argocd-blue-green.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
+{{- define "bluegreen.fullname" -}}
+{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
-Create the full name using the release name and the chart name.
+Generate labels for the application
 */}}
-{{- define "argocd-blue-green.fullname" -}}
-{{- printf "%s-%s" (include "argocd-blue-green.name" .) .Release.Name | trunc 63 | trimSuffix "-" -}}
+{{- define "bluegreen.labels" -}}
+app: {{ include "bluegreen.fullname" . }}
+release: {{ .Release.Name }}
+{{- end -}}
+
+{{/*
+Generate selector labels
+*/}}
+{{- define "bluegreen.selectorLabels" -}}
+app: {{ include "bluegreen.fullname" . }}
 {{- end -}}
