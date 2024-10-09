@@ -1,5 +1,5 @@
 global:
-  namespace: "sd2-lm"
+  namespace: "cp3"
   fullnameOverride: "guestbook"
   environment: {}
   replicaCount: 1
