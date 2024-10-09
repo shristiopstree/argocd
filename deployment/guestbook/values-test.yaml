@@ -4,6 +4,10 @@ global:
   environment: {}
   replicaCount: 1
 
+# serviceAccount:
+#   enabled: true
+#   name: guestbook-sa
+
 image:
   repository: "gcr.io/heptio-images/ks-guestbook-demo"
   tag: "0.1"
@@ -37,3 +41,9 @@ resources:
   limits:
     memory: "128Mi"
     cpu: "300m"
+
+# secrets:
+#   database-password:
+#     key: "/path/to/your/secret/database-password"
+#   api-key:
+#     key: "/path/to/your/secret/api-key"

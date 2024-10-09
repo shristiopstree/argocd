@@ -4,6 +4,10 @@ global:
   replicaCount: 1
   environment: {}
 
+# serviceAccount:
+#   enabled: true
+#   name: guestbook-sa
+
 deployment:
   annotations: {}
   environment: {}
@@ -63,3 +67,8 @@ service:
       targetPort: 80
       protocol: TCP
 
+# secrets:
+#   database-password:
+#     key: "/path/to/your/secret/database-password"
+#   api-key:
+#     key: "/path/to/your/secret/api-key"

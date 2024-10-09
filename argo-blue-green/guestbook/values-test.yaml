@@ -61,7 +61,6 @@ service:
       targetPort: 80
       protocol: TCP
 
-
 # secrets:
 #   database-password:
 #     key: "/path/to/your/secret/database-password"
