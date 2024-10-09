@@ -18,7 +18,6 @@ spec:
     {{- end }}
 
 ---
-{{- define "bluegreen.servicePreview" -}}
 apiVersion: v1
 kind: Service
 metadata:
