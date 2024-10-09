@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "argo-bluegreen.fullname" . }}-app 
+  name: {{ include "argo-bluegreen.fullname" . }}-app
   namespace: {{ .Values.global.namespace | quote }}
   {{- if .Values.deployment.annotations }}
   annotations:
@@ -14,7 +14,7 @@ metadata:
 spec:
   replicas: {{ .Values.global.replicaCount }}
   strategy:
-    argo-bluegreen:
+    blueGreen:
       activeService: {{ include "argo-bluegreen.fullname" . }}-active
       previewService: {{ include "argo-bluegreen.fullname" . }}-preview
       autoPromotionEnabled: true
