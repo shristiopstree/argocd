@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "bluegreen.fullname" . }}-app 
+  name: {{ include "argo-bluegreen.fullname" . }}-app 
   namespace: {{ .Values.global.namespace | quote }}
   {{- if .Values.deployment.annotations }}
   annotations:
@@ -10,21 +10,21 @@ metadata:
     {{- end }}
   {{- end }}
   labels:
-    {{- include "bluegreen.labels" . | nindent 4 }}
+    {{- include "argo-bluegreen.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.global.replicaCount }}
   strategy:
-    blueGreen:
-      activeService: {{ include "bluegreen.fullname" . }}-active
-      previewService: {{ include "bluegreen.fullname" . }}-preview
+    argo-bluegreen:
+      activeService: {{ include "argo-bluegreen.fullname" . }}-active
+      previewService: {{ include "argo-bluegreen.fullname" . }}-preview
       autoPromotionEnabled: true
   selector:
     matchLabels:
-      {{- include "bluegreen.selectorLabels" . | nindent 6 }}
+      {{- include "argo-bluegreen.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "bluegreen.selectorLabels" . | nindent 8 }}
+        {{- include "argo-bluegreen.selectorLabels" . | nindent 8 }}
       {{- if .Values.deployment.podAnnotations }}
       annotations:
         {{- range $key, $value := .Values.deployment.podAnnotations }}
@@ -37,7 +37,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ include "bluegreen.fullname" . }}
+        - name: {{ include "argo-bluegreen.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.deployment.command }}

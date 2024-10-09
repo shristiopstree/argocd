@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bluegreen.fullname" . }}-active
+  name: {{ include "argo-bluegreen.fullname" . }}-active
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "bluegreen.labels" . | nindent 4 }}
+    {{ include "argo-bluegreen.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "bluegreen.selectorLabels" . | nindent 4 }}
+    {{ include "argo-bluegreen.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}
@@ -21,14 +21,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bluegreen.fullname" . }}-preview
+  name: {{ include "argo-bluegreen.fullname" . }}-preview
   namespace: {{ .Values.global.namespace | quote }}
   labels:
-    {{ include "bluegreen.labels" . | nindent 4 }}
+    {{ include "argo-bluegreen.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{ include "bluegreen.selectorLabels" . | nindent 4 }}
+    {{ include "argo-bluegreen.selectorLabels" . | nindent 4 }}
   ports:
     {{- range .Values.service.specs }}
     - name: {{ .name }}

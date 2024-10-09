@@ -1,5 +1,5 @@
 apiVersion: v2
-name: bluegreen
+name: argo-bluegreen
 description: A Helm chart for deploying Argo Blue-Green in Kubernetes, enabling seamless blue-green deployments for application updates.
 type: application
 version: 2.0.0

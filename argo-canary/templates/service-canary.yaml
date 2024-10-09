@@ -1,4 +1,3 @@
-{{- define "argo-canary.canaryService" -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -17,10 +16,8 @@ spec:
       protocol: {{ .protocol | default "TCP" }}
       targetPort: {{ .targetPort | default .port }}
     {{- end }}
-{{- end }}
 
 ---
-{{- define "argo-canary.stableService" -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -39,4 +36,3 @@ spec:
       protocol: {{ .protocol | default "TCP" }}
       targetPort: {{ .targetPort | default .port }}
     {{- end }}
-{{- end }}
