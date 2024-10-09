@@ -1,8 +1,8 @@
-# {{- include "lib-chart.externalsecret" . }}
+{{- include "lib-chart.externalsecret" . }}
 
-# ---
+---
 
-# {{- include "lib-chart.serviceaccount" . }}
+{{- include "lib-chart.serviceaccount" . }}
 
 
 
